@@ -10,7 +10,7 @@ class Application(tk.Frame):
         # ウィンドウタイトル
         self.master.title("Entryの作成") 
         # ウィンドウサイズ(幅x高さ)
-        self.master.geometry("300x100")    
+        self.master.geometry("400x400")    
       
         # 表示する値
         self.entry_text = tk.StringVar() 
@@ -21,12 +21,24 @@ class Application(tk.Frame):
         # 区切り値  
         self.entry_text3 = tk.StringVar()  
         
+                
+        #ラベルWidgetを生成
+        label = tk.Label(self.master, text = "変換対象文字列") 
+        #ラベルを配置
+        label.place(relx=0, rely=0.01, relheight=0.06, relwidth=0.3)
+        
         # Entry（テクストボックス）の作成
         entry = tk.Entry(self.master,
-               width = 30,         # ウィジェットの幅（文字数で指定）
                justify = tk.LEFT, # tk.RIGHT:右寄せ、tk.LEFT:左寄せ、tk.CENTER:中央寄せ
                textvariable = self.entry_text # 表示する値
             )
+        
+        entry.place(relx=0.01, rely=0.07, relheight=0.5, relwidth=0.97) 
+
+          #ラベルWidgetを生成
+        label2 = tk.Label(self.master, text = "以降取得") 
+        #ラベルを配置
+        label2.place(relx=0.2, rely=0.6, relheight=0.06, relwidth=0.4)
         
         # 左辺取り除く 
         entry2 = tk.Entry(self.master,
@@ -34,24 +46,27 @@ class Application(tk.Frame):
                justify = tk.LEFT, # tk.RIGHT:右寄せ、tk.LEFT:左寄せ、tk.CENTER:中央寄せ
                textvariable = self.entry_text2 # 表示する値
             )
+        entry2.place(relx=0.01, rely=0.6, relheight=0.06, relwidth=0.3)
         
+        # 区切り文字列ラベル
+        label3 = tk.Label(self.master, text = "区切り文字列") 
+        #ラベルを配置
+        label3.place(relx=0.23, rely=0.7, relheight=0.06, relwidth=0.4)
+        
+        # 区切り文字列入力
         entry3 = tk.Entry(self.master,
                width = 20,         # ウィジェットの幅（文字数で指定）
                justify = tk.LEFT, # tk.RIGHT:右寄せ、tk.LEFT:左寄せ、tk.CENTER:中央寄せ
                textvariable = self.entry_text3 # 表示する値
             )
+        entry3.place(relx=0.01, rely=0.7, relheight=0.06, relwidth=0.3)
         
         # ボタンの作成
         btn_input = tk.Button(self.master, text = "入力", command = self.btn_input_click)
-        btn_clear = tk.Button(self.master, text = "クリア", command = self.btn_clear_click)
+        btn_input.place(relx=0.01, rely=0.8, relheight=0.06, relwidth=0.13)
 
-        
-        entry.pack()
-        entry2.pack()
-        entry3.pack()
-        
-        btn_input.pack()
-        btn_clear.pack()
+        btn_clear = tk.Button(self.master, text = "クリア", command = self.btn_clear_click)
+        btn_clear.place(relx=0.15, rely=0.8, relheight=0.06, relwidth=0.13)
 
     def btn_input_click(self):
         # 各エリアリスト  
@@ -59,7 +74,7 @@ class Application(tk.Frame):
            self.entry_text.get(),  #　メインエリアの入力値
            self.entry_text2.get(), #　左辺エリア値
          #   self.entry_text3.get(),  #　右辺エリア値
-           self.entry_text4.get()  #　分割値
+           self.entry_text3.get()  #　分割値
         ]
         
         # 空を含むか   
