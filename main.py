@@ -107,10 +107,12 @@ class Application(tk.Frame):
        return em
            
     def btn_clear_click(self):
-        ''' Entryのクリア '''
         self.entry_text.set("")
+        self.entry_text2.set("")
+        self.entry_text3.set("")
 
 if __name__ == "__main__":
     root = tk.Tk()
     app = Application(master = root)
     app.mainloop()
+    
